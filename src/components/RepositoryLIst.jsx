@@ -6,12 +6,12 @@ const ReposList = () => {
 
     return (
         <FlatList
-            style={styles.card}
+
             data={repositoires}
             numColumns={2}
             renderItem={({ item: elm }) => (
-                < View style={styles.container} key={elm.id}>
-                    <Text style={styles.font}>{elm.author}</Text>
+                < View key={elm.id} style={styles.card}>
+                    <Text style={styles.text}>{elm.author}</Text>
                     <Image style={styles.image} source={{ uri: elm.download_url }} />
                 </View>
             )
@@ -25,29 +25,34 @@ const ReposList = () => {
 
 const styles = StyleSheet.create({
     card: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 10,
         padding: 10,
-        margin: 20,
-
-    },
-
-    container: {
-        paddingTop: 50,
+        backgroundColor: "white",
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     image: {
         width: 150,
         height: 150,
-        borderRadius: 4
+        borderRadius: 10,
+
     },
-    font: {
+    text: {
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 15,
+        textAlign: 'center',
+
     }
 })
-
-{/* <Col.LRT>
-  <Red />
-  <Green />
-  <Blue />
-</Col.LRT> */}
 
 export default ReposList

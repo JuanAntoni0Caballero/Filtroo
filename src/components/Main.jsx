@@ -1,33 +1,28 @@
 import React from "react"
-import { StyleSheet, Text, View } from "react-native"
+import { View, Text } from "react-native"
 import ReposList from "./RepositoryLIst"
+import AppBar from "./AppBar"
+import { Switch } from "react-native-web"
+import { Route, Redirect } from "react-router-native"
+
 
 
 const Main = () => {
     return (
-        <View style={styles.container} >
-            <Text style={styles.font}>Filtroo</Text>
-            <ReposList />
+        <View >
+            <AppBar />
+            <Switch>
+                <Route path='/' exact>
+                    <ReposList />
+                </Route>
+                <Route path="/singin" exact>
+                    <Text>In progres</Text>
+                </Route>
+                <Redirect to='/' />
+            </Switch>
         </View>
     )
 }
-
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        marginTop: 30,
-    },
-    font: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        color: 'blue'
-    }
-})
-
 
 
 export default Main
